@@ -1,0 +1,159 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Package Documentation\n\n\nThis package allows you to store and send e-mails using a database. \n\n\nContribution\n\n\nThe package is MIT licenced, meaning it's open source and you are free to copy or fork it and modify it any way you wish.\n\n\nWe feel the package is currently feature complete, but feel free to send a pull request or help improve existing code.", 
+            "title": "Package Documentation"
+        }, 
+        {
+            "location": "/#package-documentation", 
+            "text": "This package allows you to store and send e-mails using a database.", 
+            "title": "Package Documentation"
+        }, 
+        {
+            "location": "/#contribution", 
+            "text": "The package is MIT licenced, meaning it's open source and you are free to copy or fork it and modify it any way you wish.  We feel the package is currently feature complete, but feel free to send a pull request or help improve existing code.", 
+            "title": "Contribution"
+        }, 
+        {
+            "location": "/installation/", 
+            "text": "Installation\n\n\nRequire the package using composer.\n\n\ncomposer require buildcode/laravel-database-emails\n\n\n\n\n\nIf you're running Laravel 5.5 or later you may skip this step. Add the service provider to your application.\n\n\nBuildcode\\LaravelDatabaseEmails\\LaravelDatabaseEmailsServiceProvider::class,\n\n\n\n\n\nPublish the configuration files.\n\n\nphp artisan vendor:publish --provider\n=\nBuildcode\n\\\\\nLaravelDatabaseEmails\n\\\\\nLaravelDatabaseEmailsServiceProvider\n\n\n\n\n\nCreate the database table required for this package.\n\n\nphp artisan migrate\n\n\n\n\n\nAdd the e-mail cronjob to your scheduler\n\n\n?php\n\n\n\n/**\n\n\n * Define the application\ns command schedule.\n\n\n *\n\n\n * @param  \\Illuminate\\Console\\Scheduling\\Schedule  $schedule\n\n\n * @return void\n\n\n */\n\n\nprotected\n \nfunction\n \nschedule\n(\nSchedule\n \n$schedule\n)\n\n\n{\n\n     \n$schedule\n-\ncommand\n(\nemail:send\n,\n \n[\n--timeout\n \n=\n \n300\n])\n-\neveryMinute\n()\n-\nwithoutOverlapping\n(\n5\n);\n\n\n}\n\n\n\n\n\n\nUsing the above configuration, the \nemail:send\n process will exit after 5 minutes (\n--timeout\n) and won't overlap if the process still runs after 5 minutes (\nwithoutOverlapping\n)", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/installation/#installation", 
+            "text": "Require the package using composer.  composer require buildcode/laravel-database-emails  If you're running Laravel 5.5 or later you may skip this step. Add the service provider to your application.  Buildcode\\LaravelDatabaseEmails\\LaravelDatabaseEmailsServiceProvider::class,  Publish the configuration files.  php artisan vendor:publish --provider = Buildcode \\\\ LaravelDatabaseEmails \\\\ LaravelDatabaseEmailsServiceProvider  Create the database table required for this package.  php artisan migrate  Add the e-mail cronjob to your scheduler  ?php  /**   * Define the application s command schedule.   *   * @param  \\Illuminate\\Console\\Scheduling\\Schedule  $schedule   * @return void   */  protected   function   schedule ( Schedule   $schedule )  { \n      $schedule - command ( email:send ,   [ --timeout   =   300 ]) - everyMinute () - withoutOverlapping ( 5 );  }   Using the above configuration, the  email:send  process will exit after 5 minutes ( --timeout ) and won't overlap if the process still runs after 5 minutes ( withoutOverlapping )", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/releases/", 
+            "text": "Releases\n\n\nAll notable changes to this project will be documented in this file.\n\n\nThe format is based on \nKeep a Changelog\n\nand this project adheres to \nSemantic Versioning\n.\n\n\n3.0.2 - 2018-03-22\n\n\nChanged\n\n\n\n\nUpdated README.md\n\n\n\n\nAdded\n\n\n\n\nSupport for process time limit\n\n\n\n\n\n\n3.0.1 - 2018-03-18\n\n\nChanged\n\n\n\n\nUpdated README.md\n\n\nDeprecated \nemail:retry\n, please use \nemail:resend\n\n\n\n\n\n\n3.0.0 - 2017-12-22\n\n\nAdded\n\n\n\n\nSupport for a custom sender per e-mail.\n\n\n\n\nUpgrade from 2.x to 3.x\n\n\n3.0.0 added support for a custom sender per e-mail. To update please run the following command:\n\n\nphp artisan migrate\n\n\n\n\n\n\n\n2.0.0 - 2017-12-14\n\n\nAdded\n\n\n\n\nSupport for multiple recipients, cc and bcc addresses.\n\n\nSupport for mailables (*)\n\n\nSupport for attachments\n\n\nNew method \nlater\n\n\n\n\n*= Only works for Laravel versions 5.5 and up because 5.5 finally introduced a method to read the mailable body.\n\n\nFixed\n\n- Bug causing failed e-mails not to be resent\n\n\nUpgrade from 1.x to 2.x\n\nBecause 2.0.0 introduced support for attachments, the database needs to be updated. Simply run the following two commands after updating your dependencies and running composer update:\n\n\nphp artisan migrate\n\n\n\n\n\n\n\n1.1.3 - 2017-12-07\n\n\nFixed\n\n\n\n\nCreated a small backwards compatibility fix for Laravel versions 5.4 and below.\n\n\n\n\n\n\n1.1.2 - 2017-11-18\n\n\nFixed\n\n\n\n\nIncorrect auto discovery namespace for Laravel 5.5\n\n\n\n\n\n\n1.1.1 - 2017-08-02\n\n\nChanged\n\n\n\n\nOnly dispatch \nbefore.send\n event during unit tests\n\n\n\n\n\n\n1.1.0 - 2017-07-01\n\n\nAdded\n\n\n\n\nPHPUnit tests\n\n\nSupport for CC and BCC\n\n\n\n\n\n\n1.0.0 - 2017-06-29\n\n\nAdded\n\n\n\n\nInitial release of the package", 
+            "title": "Releases"
+        }, 
+        {
+            "location": "/releases/#releases", 
+            "text": "All notable changes to this project will be documented in this file.  The format is based on  Keep a Changelog \nand this project adheres to  Semantic Versioning .", 
+            "title": "Releases"
+        }, 
+        {
+            "location": "/releases/#302-2018-03-22", 
+            "text": "Changed   Updated README.md   Added   Support for process time limit", 
+            "title": "3.0.2 - 2018-03-22"
+        }, 
+        {
+            "location": "/releases/#301-2018-03-18", 
+            "text": "Changed   Updated README.md  Deprecated  email:retry , please use  email:resend", 
+            "title": "3.0.1 - 2018-03-18"
+        }, 
+        {
+            "location": "/releases/#300-2017-12-22", 
+            "text": "Added   Support for a custom sender per e-mail.   Upgrade from 2.x to 3.x  3.0.0 added support for a custom sender per e-mail. To update please run the following command:  php artisan migrate", 
+            "title": "3.0.0 - 2017-12-22"
+        }, 
+        {
+            "location": "/releases/#200-2017-12-14", 
+            "text": "Added   Support for multiple recipients, cc and bcc addresses.  Support for mailables (*)  Support for attachments  New method  later   *= Only works for Laravel versions 5.5 and up because 5.5 finally introduced a method to read the mailable body.  Fixed \n- Bug causing failed e-mails not to be resent  Upgrade from 1.x to 2.x \nBecause 2.0.0 introduced support for attachments, the database needs to be updated. Simply run the following two commands after updating your dependencies and running composer update:  php artisan migrate", 
+            "title": "2.0.0 - 2017-12-14"
+        }, 
+        {
+            "location": "/releases/#113-2017-12-07", 
+            "text": "Fixed   Created a small backwards compatibility fix for Laravel versions 5.4 and below.", 
+            "title": "1.1.3 - 2017-12-07"
+        }, 
+        {
+            "location": "/releases/#112-2017-11-18", 
+            "text": "Fixed   Incorrect auto discovery namespace for Laravel 5.5", 
+            "title": "1.1.2 - 2017-11-18"
+        }, 
+        {
+            "location": "/releases/#111-2017-08-02", 
+            "text": "Changed   Only dispatch  before.send  event during unit tests", 
+            "title": "1.1.1 - 2017-08-02"
+        }, 
+        {
+            "location": "/releases/#110-2017-07-01", 
+            "text": "Added   PHPUnit tests  Support for CC and BCC", 
+            "title": "1.1.0 - 2017-07-01"
+        }, 
+        {
+            "location": "/releases/#100-2017-06-29", 
+            "text": "Added   Initial release of the package", 
+            "title": "1.0.0 - 2017-06-29"
+        }, 
+        {
+            "location": "/usage/", 
+            "text": "Usage\n\n\nSend an email\n\n\n?php\n\n\n\nuse\n \nBuildcode\\LaravelDatabaseEmails\\Email\n;\n\n\n\nEmail\n::\ncompose\n()\n\n    \n-\nlabel\n(\nwelcome\n)\n\n    \n-\nrecipient\n(\njohn@doe.com\n)\n\n    \n-\nsubject\n(\nThis is a test\n)\n\n    \n-\nview\n(\nemails.welcome\n)\n\n    \n-\nvariables\n([\n\n        \nname\n \n=\n \nJohn Doe\n,\n\n    \n])\n\n    \n-\nsend\n();\n\n\n\n\n\n\nSpecify multiple recipients\n\n\n?php\n\n\n\nuse\n \nBuildcode\\LaravelDatabaseEmails\\Email\n;\n\n\n\nBuildcode\\LaravelDatabaseEmails\\Email\n::\ncompose\n()\n\n    \n-\nrecipient\n([\n\n        \njohn@doe.com\n,\n\n        \njane@doe.com\n\n    \n]);\n\n\n\n\n\n\nCC and BCC\n\n\n?php\n\n\n\nuse\n \nBuildcode\\LaravelDatabaseEmails\\Email\n;\n\n\n\nEmail\n::\ncompose\n()\n\n    \n-\ncc\n(\njohn@doe.com\n)\n\n    \n-\ncc\n([\njohn@doe.com\n,\n \njane@doe.com\n])\n\n    \n-\nbcc\n(\njohn@doe.com\n)\n\n    \n-\nbcc\n([\njohn@doe.com\n,\n \njane@doe.com\n]);\n\n\n\n\n\n\nUsing mailables\n\n\nYou may also pass a mailable to the e-mail composer.\n\n\n?php\n\n\n\nuse\n \nBuildcode\\LaravelDatabaseEmails\\Email\n;\n\n\n\nEmail\n::\ncompose\n()\n\n    \n-\nmailable\n(\nnew\n \nOrderShipped\n())\n\n    \n-\nsend\n();\n\n\n\n\n\n\nAttachments\n\n\n?php\n\n\n\nuse\n \nBuildcode\\LaravelDatabaseEmails\\Email\n;\n\n\n\nEmail\n::\ncompose\n()\n\n    \n-\nattach\n(\n/path/to/file\n);\n\n\n\n\n\n\nOr for in-memory attachments:\n\n\n?php\n\n\n\nuse\n \nBuildcode\\LaravelDatabaseEmails\\Email\n;\n\n\n\nEmail\n::\ncompose\n()\n\n    \n-\nattachData\n(\np\nYour order has shipped!\n/p\n,\n \norder.html\n);\n\n\n\n\n\n\nCustom Sender\n\n\n?php\n\n\n\nuse\n \nBuildcode\\LaravelDatabaseEmails\\Email\n;\n\n\n\nEmail\n::\ncompose\n()\n\n    \n-\nfrom\n(\njohn@doe.com\n,\n \nJohn Doe\n);\n\n\n\n\n\n\nScheduling\n\n\nYou may schedule an e-mail by calling \nlater\n instead of \nsend\n. You must provide a Carbon instance or a strtotime valid date.\n\n\n?php\n\n\n\nuse\n \nBuildcode\\LaravelDatabaseEmails\\Email\n;\n\n\n\nEmail\n::\ncompose\n()\n\n    \n-\nlater\n(\n+2 hours\n);\n\n\n\n\n\n\nResend failed e-mails\n\n\nResend all failed e-mails\n\n\nphp artisan email:resend\n\n\n\n\n\nResend a specific failed e-mail\n\n\nphp artisan email:resend \n1\n\n\n\n\n\n\nEncryption (Optional)\n\n\nIf you wish to encrypt your e-mails, please enable the \nencrypt\n option in the configuration file. This is disabled by default. Encryption and decryption will be handled by Laravel's built-in encryption mechanism. Please note that by encrypting the e-mail it takes more disk space.\n\n\nWithout encryption\n\n7    bytes (label)\n16   bytes (recipient)\n20   bytes (subject)\n48   bytes (view name)\n116  bytes (variables)\n1874 bytes (e-mail content)\n4    bytes (attempts, sending, failed, encrypted)\n57   bytes (created_at, updated_at, deleted_at)\n... x 10.000 rows = \u00b1 21.55 MB\n\nWith encryption the table size is \u00b1 50.58 MB.\n\n\n\n\n\nTest mode (Optional)\n\n\nWhen enabled, all newly created e-mails will be sent to the specified test e-mail address. This is turned off by default.\n\n\nE-mails to send per minute\n\n\nTo configure how many e-mails should be sent each command, please check the \nlimit\n option. The default is \n20\n e-mails every command.", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/usage/#usage", 
+            "text": "", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/usage/#send-an-email", 
+            "text": "?php  use   Buildcode\\LaravelDatabaseEmails\\Email ;  Email :: compose () \n     - label ( welcome ) \n     - recipient ( john@doe.com ) \n     - subject ( This is a test ) \n     - view ( emails.welcome ) \n     - variables ([ \n         name   =   John Doe , \n     ]) \n     - send ();", 
+            "title": "Send an email"
+        }, 
+        {
+            "location": "/usage/#specify-multiple-recipients", 
+            "text": "?php  use   Buildcode\\LaravelDatabaseEmails\\Email ;  Buildcode\\LaravelDatabaseEmails\\Email :: compose () \n     - recipient ([ \n         john@doe.com , \n         jane@doe.com \n     ]);", 
+            "title": "Specify multiple recipients"
+        }, 
+        {
+            "location": "/usage/#cc-and-bcc", 
+            "text": "?php  use   Buildcode\\LaravelDatabaseEmails\\Email ;  Email :: compose () \n     - cc ( john@doe.com ) \n     - cc ([ john@doe.com ,   jane@doe.com ]) \n     - bcc ( john@doe.com ) \n     - bcc ([ john@doe.com ,   jane@doe.com ]);", 
+            "title": "CC and BCC"
+        }, 
+        {
+            "location": "/usage/#using-mailables", 
+            "text": "You may also pass a mailable to the e-mail composer.  ?php  use   Buildcode\\LaravelDatabaseEmails\\Email ;  Email :: compose () \n     - mailable ( new   OrderShipped ()) \n     - send ();", 
+            "title": "Using mailables"
+        }, 
+        {
+            "location": "/usage/#attachments", 
+            "text": "?php  use   Buildcode\\LaravelDatabaseEmails\\Email ;  Email :: compose () \n     - attach ( /path/to/file );   Or for in-memory attachments:  ?php  use   Buildcode\\LaravelDatabaseEmails\\Email ;  Email :: compose () \n     - attachData ( p Your order has shipped! /p ,   order.html );", 
+            "title": "Attachments"
+        }, 
+        {
+            "location": "/usage/#custom-sender", 
+            "text": "?php  use   Buildcode\\LaravelDatabaseEmails\\Email ;  Email :: compose () \n     - from ( john@doe.com ,   John Doe );", 
+            "title": "Custom Sender"
+        }, 
+        {
+            "location": "/usage/#scheduling", 
+            "text": "You may schedule an e-mail by calling  later  instead of  send . You must provide a Carbon instance or a strtotime valid date.  ?php  use   Buildcode\\LaravelDatabaseEmails\\Email ;  Email :: compose () \n     - later ( +2 hours );", 
+            "title": "Scheduling"
+        }, 
+        {
+            "location": "/usage/#resend-failed-e-mails", 
+            "text": "", 
+            "title": "Resend failed e-mails"
+        }, 
+        {
+            "location": "/usage/#resend-all-failed-e-mails", 
+            "text": "php artisan email:resend", 
+            "title": "Resend all failed e-mails"
+        }, 
+        {
+            "location": "/usage/#resend-a-specific-failed-e-mail", 
+            "text": "php artisan email:resend  1", 
+            "title": "Resend a specific failed e-mail"
+        }, 
+        {
+            "location": "/usage/#encryption-optional", 
+            "text": "If you wish to encrypt your e-mails, please enable the  encrypt  option in the configuration file. This is disabled by default. Encryption and decryption will be handled by Laravel's built-in encryption mechanism. Please note that by encrypting the e-mail it takes more disk space.  Without encryption\n\n7    bytes (label)\n16   bytes (recipient)\n20   bytes (subject)\n48   bytes (view name)\n116  bytes (variables)\n1874 bytes (e-mail content)\n4    bytes (attempts, sending, failed, encrypted)\n57   bytes (created_at, updated_at, deleted_at)\n... x 10.000 rows = \u00b1 21.55 MB\n\nWith encryption the table size is \u00b1 50.58 MB.", 
+            "title": "Encryption (Optional)"
+        }, 
+        {
+            "location": "/usage/#test-mode-optional", 
+            "text": "When enabled, all newly created e-mails will be sent to the specified test e-mail address. This is turned off by default.", 
+            "title": "Test mode (Optional)"
+        }, 
+        {
+            "location": "/usage/#e-mails-to-send-per-minute", 
+            "text": "To configure how many e-mails should be sent each command, please check the  limit  option. The default is  20  e-mails every command.", 
+            "title": "E-mails to send per minute"
+        }
+    ]
+}
