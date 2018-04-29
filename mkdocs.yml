@@ -1,0 +1,10 @@
+site_name: Laravel Database E-mails
+theme:
+  name: 'material'
+  palette:
+    primary: 'green'
+  logo:
+    icon: 'email'
+markdown_extensions:
+  - codehilite
+extra_css: [extra.css]
